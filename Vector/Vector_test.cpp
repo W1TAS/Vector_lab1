@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "D:\БГУИР\Курс 2\ППОИС\lab1\vector\vector.cpp"
+#include "Vector\Vector.cpp"
 
 
 
@@ -13,7 +13,7 @@ TEST(VectorTest, ParameterizedConstructor) {
     EXPECT_DOUBLE_EQ(v.length(), std::sqrt(3));
 }
 
-// Тесты для оператора +
+//  +
 TEST(VectorTest, AdditionOperator) {
     Vector v1(0, 0, 0, 1, 1, 1);
     Vector v2(1, 1, 1, 2, 2, 2);
@@ -21,7 +21,7 @@ TEST(VectorTest, AdditionOperator) {
     EXPECT_DOUBLE_EQ(result.length(), std::sqrt(12));
 }
 
-// Тесты для оператора +=
+//  +=
 TEST(VectorTest, AdditionAssignmentOperator) {
     Vector v1(0, 0, 0, 1, 1, 1);
     Vector v2(1, 1, 1, 2, 2, 2);
@@ -29,7 +29,7 @@ TEST(VectorTest, AdditionAssignmentOperator) {
     EXPECT_DOUBLE_EQ(v1.length(), std::sqrt(12));
 }
 
-// Тесты для оператора -
+// -
 TEST(VectorTest, SubtractionOperator) {
     Vector v1(1, 1, 1, 3, 3, 3);
     Vector v2(0, 0, 0, 1, 1, 1);
@@ -37,7 +37,7 @@ TEST(VectorTest, SubtractionOperator) {
     EXPECT_DOUBLE_EQ(result.length(), std::sqrt(3));
 }
 
-// Тесты для оператора -=
+//  -=
 TEST(VectorTest, SubtractionAssignmentOperator) {
     Vector v1(1, 1, 1, 2, 2, 2);
     Vector v2(0, 0, 0, 1, 1, 1);
@@ -45,7 +45,7 @@ TEST(VectorTest, SubtractionAssignmentOperator) {
     EXPECT_DOUBLE_EQ(v1.length(), 0.0);
 }
 
-// Тесты для оператора *
+//  *
 TEST(VectorTest, MultiplicationOperator) {
     Vector v1(0, 0, 0, 1, 0, 1);
     Vector v2(1, 1, 1, 2, 2, 1);
@@ -53,7 +53,7 @@ TEST(VectorTest, MultiplicationOperator) {
     EXPECT_DOUBLE_EQ(result.length(), std::sqrt(3));
 }
 
-// Тесты для оператора *=
+//  *=
 TEST(VectorTest, MultiplicationAssignmentOperator) {
     Vector v1(0, 0, 0, 4, 69, 37);
     Vector v2(1, 1, 1, -3.2, 86, -68);
@@ -63,21 +63,21 @@ TEST(VectorTest, MultiplicationAssignmentOperator) {
     EXPECT_EQ(output.str(), "(0, 0, 0, -7906, 120.6, 629.8)");
 }
 
-// Тесты для оператора * (скаляр)
+//  * (scalar)
 TEST(VectorTest, ScalarMultiplicationOperator) {
     Vector v(0, 0, 0, 1, 1, 1);
     Vector result = v * 2.0;
     EXPECT_DOUBLE_EQ(result.length(), std::sqrt(12));
 }
 
-// Тесты для оператора *= (скаляр)
+//  *= (scalar)
 TEST(VectorTest, ScalarMultiplicationAssignmentOperator) {
     Vector v(0, 0, 0, 1, 1, 1);
     v *= 2.0;
     EXPECT_DOUBLE_EQ(v.length(), std::sqrt(12));
 }
 
-// Тесты для оператора /
+//  /
 TEST(VectorTest, DivisionOperator) {
     Vector v1(0, 0, 0, 2, 0, 2);
     Vector v2(1, 1, 1, 3, 3, 3);
@@ -85,7 +85,7 @@ TEST(VectorTest, DivisionOperator) {
     EXPECT_DOUBLE_EQ(result.length(), std::sqrt(2));
 }
 
-// Тесты для оператора /= 
+//  /= 
 TEST(VectorTest, DivisionAssignmentOperator) {
     Vector v1(0, 0, 0, 2, 2, 3);
     Vector v2(1, 1, 1, 3, 3, 3);
@@ -95,30 +95,30 @@ TEST(VectorTest, DivisionAssignmentOperator) {
     EXPECT_EQ(output.str(), "(0, 0, 0, -0.5, 0.5, 0)");
 }
 
-// Тесты для оператора ^
+//  ^
 TEST(VectorTest, DotProductOperator) {
     Vector v1(0, 0, 0, 1, 1, 1);
     Vector v2(1, 1, 1, 2, 2, 2);
     EXPECT_DOUBLE_EQ(v1 ^ v2, 1.0);
 }
 
-// Тест для выброса ошибки при делении на ноль в операторе /
+//  /
 TEST(VectorTest, DivisionByZeroThrows) {
     Vector v1(0, 0, 0, 1, 1, 1);
-    Vector v2(0, 0, 0, 0, 0, 0); // Компоненты вектора равны нулю
+    Vector v2(0, 0, 0, 0, 0, 0); 
 
     EXPECT_THROW(v1 / v2, std::runtime_error);
 }
 
-// Тест для выброса ошибки при делении на ноль в операторе ^
+//  ^
 TEST(VectorTest, DotProductDivisionByZeroThrows) {
     Vector v1(0, 0, 0, 1, 1, 1);
-    Vector v2(0, 0, 0, 0, 0, 0); // Длина вектора равна нулю
+    Vector v2(0, 0, 0, 0, 0, 0); 
 
     EXPECT_THROW(v1 ^ v2, std::runtime_error);
 }
 
-// Тесты для оператора ==
+// Г’ГҐГ±ГІГ» Г¤Г«Гї Г®ГЇГҐГ°Г ГІГ®Г°Г  ==
 TEST(VectorTest, EqualityOperatorTrue) {
     Vector v1(0, 0, 0, 1, 1, 1);
     Vector v2(1, 1, 1, 2, 2, 2);
@@ -131,49 +131,49 @@ TEST(VectorTest, EqualityOperatorFalse) {
     EXPECT_FALSE(v1 == v2);
 }
 
-// Тесты для оператора !=
+//  !=
 TEST(VectorTest, InequalityOperatorTrue) {
     Vector v1(0, 0, 0, 1, 1, 2);
     Vector v2(1, 1, 1, 2, 2, 2);
     EXPECT_TRUE(v1 != v2);
 }
 
-// Тесты для оператора !=
+//  !=
 TEST(VectorTest, InequalityOperatorFalse) {
     Vector v1(0, 0, 0, 1, 1, 1);
     Vector v2(1, 1, 1, 2, 2, 2);
     EXPECT_FALSE(v1 != v2);
 }
 
-// Тесты для оператора >
+//  >
 TEST(VectorTest, GreaterThanOperatorTrue) {
     Vector v1(0, 0, 0, 2, 2, 2);
     Vector v2(0, 0, 0, 1, 1, 1);
     EXPECT_TRUE(v1 > v2);
 }
 
-// Тесты для оператора >
+//  >
 TEST(VectorTest, GreaterThanOperatorFalse) {
     Vector v1(0, 0, 0, 2, 2, 2);
     Vector v2(0, 0, 0, 5, 5, 1);
     EXPECT_FALSE(v1 > v2);
 }
 
-// Тесты для оператора <
+//  <
 TEST(VectorTest, LessThanOperator) {
     Vector v1(0, 0, 0, 1, 1, 1);
     Vector v2(0, 0, 0, 2, 2, 2);
     EXPECT_TRUE(v1 < v2);
 }
 
-// Тесты для оператора <
+//  <
 TEST(VectorTest, LessThanOperatorFalse) {
     Vector v1(0, 0, 0, 78, 1, 1);
     Vector v2(0, 0, 0, 2, 2, 2);
     EXPECT_FALSE(v1 < v2);
 }
 
-// Тесты для оператора >=
+//  >=
 TEST(VectorTest, GreaterThanOrEqualOperatorTrue) {
     Vector v1(0, 0, 0, 2, 2, 2);
     Vector v2(0, 0, 0, 1, 1, 1);
@@ -182,7 +182,7 @@ TEST(VectorTest, GreaterThanOrEqualOperatorTrue) {
     EXPECT_TRUE(v1 >= v3);
 }
 
-// Тесты для оператора >=
+//  >=
 TEST(VectorTest, GreaterThanOrEqualOperatorFalse) {
     Vector v3(0, 0, 0, 2, 2, 2);
     Vector v2(0, 0, 0, 1, 1, 1);
@@ -191,7 +191,7 @@ TEST(VectorTest, GreaterThanOrEqualOperatorFalse) {
     EXPECT_TRUE(v1 >= v3);
 }
 
-// Тесты для оператора <=
+//  <=
 TEST(VectorTest, LessThanOrEqualOperatorTrue) {
     Vector v1(0, 0, 0, 1, 1, 1);
     Vector v2(0, 0, 0, 2, 2, 2);
@@ -200,7 +200,7 @@ TEST(VectorTest, LessThanOrEqualOperatorTrue) {
     EXPECT_TRUE(v1 <= v3);
 }
 
-// Тесты для оператора <=
+//  <=
 TEST(VectorTest, LessThanOrEqualOperatorFalse) {
     Vector v3(0, 0, 0, 1, 1, 52);
     Vector v2(0, 0, 0, 2, 2, 2);
@@ -209,7 +209,7 @@ TEST(VectorTest, LessThanOrEqualOperatorFalse) {
     EXPECT_TRUE(v1 <= v3);
 }
 
-// Тесты для оператора =
+//  =
 TEST(VectorTest, AssignmentOperator) {
     Vector v1(0, 0, 0, 1, 1, 1);
     Vector v2 = v1;
@@ -217,7 +217,7 @@ TEST(VectorTest, AssignmentOperator) {
 }
 
 
-// Тесты для функции display
+// display
 TEST(VectorTest, DisplayFunction) {
     Vector v(0, 0, 0, 1, 1, 1);
     testing::internal::CaptureStdout();
@@ -226,7 +226,7 @@ TEST(VectorTest, DisplayFunction) {
     EXPECT_EQ(output, "(0, 0, 0) -> (1, 1, 1)\n");
 }
 
-// Тесты для оператора ввода
+// input
 TEST(VectorTest, InputOperator) {
     Vector v;
     std::istringstream input("0 0 0 1 1 1");
@@ -234,7 +234,7 @@ TEST(VectorTest, InputOperator) {
     EXPECT_DOUBLE_EQ(v.length(), std::sqrt(3));
 }
 
-// Тесты для оператора вывода
+// outout
 TEST(VectorTest, OutputOperator) {
     Vector v(0, 0, 0, 1, 1, 1);
     std::ostringstream output;
