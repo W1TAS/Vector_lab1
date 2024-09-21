@@ -100,25 +100,61 @@ TEST(VectorTest, DotProductOperator) {
     EXPECT_DOUBLE_EQ(v1 ^ v2, 1.0);
 }
 
-// Тесты для оператора ==
-TEST(VectorTest, EqualityOperator) {
+// Тест для выброса ошибки при делении на ноль в операторе /
+TEST(VectorTest, DivisionByZeroThrows) {
     Vector v1(0, 0, 0, 1, 1, 1);
-    Vector v2(0, 0, 0, 1, 1, 1);
+    Vector v2(0, 0, 0, 0, 0, 0); // Компоненты вектора равны нулю
+
+    EXPECT_THROW(v1 / v2, std::runtime_error);
+}
+
+// Тест для выброса ошибки при делении на ноль в операторе ^
+TEST(VectorTest, DotProductDivisionByZeroThrows) {
+    Vector v1(0, 0, 0, 1, 1, 1);
+    Vector v2(0, 0, 0, 0, 0, 0); // Длина вектора равна нулю
+
+    EXPECT_THROW(v1 ^ v2, std::runtime_error);
+}
+
+// Тесты для оператора ==
+TEST(VectorTest, EqualityOperatorTrue) {
+    Vector v1(0, 0, 0, 1, 1, 1);
+    Vector v2(1, 1, 1, 2, 2, 2);
     EXPECT_TRUE(v1 == v2);
 }
 
+TEST(VectorTest, EqualityOperatorFalse) {
+    Vector v1(1, 0, 0, 1, 1, 1);
+    Vector v2(1, 1, 1, 2, 2, 2);
+    EXPECT_FALSE(v1 == v2);
+}
+
 // Тесты для оператора !=
-TEST(VectorTest, InequalityOperator) {
-    Vector v1(0, 0, 0, 1, 1, 1);
+TEST(VectorTest, InequalityOperatorTrue) {
+    Vector v1(0, 0, 0, 1, 1, 2);
     Vector v2(1, 1, 1, 2, 2, 2);
     EXPECT_TRUE(v1 != v2);
 }
 
+// Тесты для оператора !=
+TEST(VectorTest, InequalityOperatorFalse) {
+    Vector v1(0, 0, 0, 1, 1, 1);
+    Vector v2(1, 1, 1, 2, 2, 2);
+    EXPECT_FALSE(v1 != v2);
+}
+
 // Тесты для оператора >
-TEST(VectorTest, GreaterThanOperator) {
+TEST(VectorTest, GreaterThanOperatorTrue) {
     Vector v1(0, 0, 0, 2, 2, 2);
     Vector v2(0, 0, 0, 1, 1, 1);
     EXPECT_TRUE(v1 > v2);
+}
+
+// Тесты для оператора >
+TEST(VectorTest, GreaterThanOperatorFalse) {
+    Vector v1(0, 0, 0, 2, 2, 2);
+    Vector v2(0, 0, 0, 5, 5, 1);
+    EXPECT_FALSE(v1 > v2);
 }
 
 // Тесты для оператора <
@@ -126,6 +162,13 @@ TEST(VectorTest, LessThanOperator) {
     Vector v1(0, 0, 0, 1, 1, 1);
     Vector v2(0, 0, 0, 2, 2, 2);
     EXPECT_TRUE(v1 < v2);
+}
+
+// Тесты для оператора <
+TEST(VectorTest, LessThanOperatorFalse) {
+    Vector v1(0, 0, 0, 78, 1, 1);
+    Vector v2(0, 0, 0, 2, 2, 2);
+    EXPECT_FALSE(v1 < v2);
 }
 
 // Тесты для оператора >=
