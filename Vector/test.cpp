@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "D:\БГУИР\Курс 2\ППОИС\lab1\vector\vector.cpp"
 
+
+
 TEST(VectorTest, DefaultConstructor) {
     Vector v;
     EXPECT_EQ(v.length(), 0);
@@ -172,7 +174,7 @@ TEST(VectorTest, LessThanOperatorFalse) {
 }
 
 // Тесты для оператора >=
-TEST(VectorTest, GreaterThanOrEqualOperator) {
+TEST(VectorTest, GreaterThanOrEqualOperatorTrue) {
     Vector v1(0, 0, 0, 2, 2, 2);
     Vector v2(0, 0, 0, 1, 1, 1);
     Vector v3(0, 0, 0, 2, 2, 2);
@@ -180,12 +182,30 @@ TEST(VectorTest, GreaterThanOrEqualOperator) {
     EXPECT_TRUE(v1 >= v3);
 }
 
+// Тесты для оператора >=
+TEST(VectorTest, GreaterThanOrEqualOperatorFalse) {
+    Vector v3(0, 0, 0, 2, 2, 2);
+    Vector v2(0, 0, 0, 1, 1, 1);
+    Vector v1(0, 0, 0, 2, 2, 2);
+    EXPECT_FALSE(v2 >= v1);
+    EXPECT_TRUE(v1 >= v3);
+}
+
 // Тесты для оператора <=
-TEST(VectorTest, LessThanOrEqualOperator) {
+TEST(VectorTest, LessThanOrEqualOperatorTrue) {
     Vector v1(0, 0, 0, 1, 1, 1);
     Vector v2(0, 0, 0, 2, 2, 2);
     Vector v3(0, 0, 0, 1, 1, 1);
     EXPECT_TRUE(v1 <= v2);
+    EXPECT_TRUE(v1 <= v3);
+}
+
+// Тесты для оператора <=
+TEST(VectorTest, LessThanOrEqualOperatorFalse) {
+    Vector v3(0, 0, 0, 1, 1, 52);
+    Vector v2(0, 0, 0, 2, 2, 2);
+    Vector v1(0, 0, 0, 1, 1, 52);
+    EXPECT_FALSE(v1 <= v2);
     EXPECT_TRUE(v1 <= v3);
 }
 
@@ -195,6 +215,7 @@ TEST(VectorTest, AssignmentOperator) {
     Vector v2 = v1;
     EXPECT_TRUE(v1 == v2);
 }
+
 
 // Тесты для функции display
 TEST(VectorTest, DisplayFunction) {
